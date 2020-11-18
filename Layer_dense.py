@@ -1,32 +1,3 @@
-import numpy as np
-from nnfs.datasets import spiral_data
-import nnfs
-import matplotlib.pyplot as plt
-nnfs.init()
-
-class Layer_Dense:
-    def __init__(self, n_inputs, n_neurons):
-        """
-        generate weights randomy
-        this assumes we are not transfer ;earning, ofc
-        """
-        self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)
-        """
-        initialize biases to zero, so that initially each neuron fires
-        this can be a best practice, but there are also other techniques
-        i.e. may be a bad idea to initialize all zeroes in the case of
-        many dead neurons
-        """
-        self.biases = np.zeros((1, n_neurons))
-
-    def forward(self, inputs)
-        self.output = np.dot(inputs, self.weights) + self.biases
-
-#create a dense layer with two input features and three neurons
-dense1 = Layer_Dense(2,3)
-
-dense1.forward(X)
-
 """
 np.random.randn -> a convenient way to initialize arrays
     Produces a gaussian distribution with a mean of 0 and a variance of 1
@@ -46,13 +17,40 @@ np.random.randn(x,y) -> Takes dimension sizes as parameters and creates the
     up array of weights, just randomly generated.
 """
 
-print(np.random.randn(2,3,4,3,2,4,2,5)
-    
-
-
-
+import numpy as np
+from nnfs.datasets import spiral_data
+import nnfs
+import matplotlib.pyplot as plt
 nnfs.init()
-X,y = spiral_data(samples = 200, classes = 3)
+
+class Layer_Dense:
+    def __init__(self, n_inputs, n_neurons):
+        """
+        generate weights randomy
+        this assumes we are not transfer ;earning, ofc
+        """
+        
+        self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)
+        """
+        initialize biases to zero, so that initially each neuron fires
+        this can be a best practice, but there are also other techniques
+        i.e. may be a bad idea to initialize all zeroes in the case of
+        many dead neurons
+        """
+        self.biases = np.zeros((1, n_neurons))
+
+    def forward(self, inputs):
+        self.output = np.dot(inputs, self.weights) + self.biases
+
+X,y = spiral_data(samples = 100, classes = 3)
+
+#create a dense layer with two input features and three neurons
+dense1 = Layer_Dense(2,3)
+#next, perform a forward pass of our data throught this layer
+dense1.forward(X)
+
+print(dense1.output[:5])
+
 plt.scatter(X[:,0], X[:,1],label="deez",c=y, cmap='brg')
 #plt.ylabel(loc='bottom', fontsize=18)
 plt.show()
