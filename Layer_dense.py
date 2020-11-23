@@ -42,6 +42,7 @@ class Layer_Dense:
     def forward(self, inputs):
         self.output = np.dot(inputs, self.weights) + self.biases
 
+"""
 X,y = spiral_data(samples = 100, classes = 3)
 
 #create a dense layer with two input features and three neurons
@@ -54,3 +55,4 @@ print(dense1.output[:5])
 plt.scatter(X[:,0], X[:,1],label="deez",c=y, cmap='brg')
 #plt.ylabel(loc='bottom', fontsize=18)
 plt.show()
+"""

@@ -1,5 +1,5 @@
-#softmax activation
-#produces confidence scores for each class that add up to one
+# softmax activation
+# produces confidence scores for each class that add up to one
 import numpy as np
 from matplotlib import pyplot as plt
 from Layer_dense import Layer_Dense as LD
@@ -7,19 +7,22 @@ from activation import Activation_ReLU
 from nnfs.datasets import spiral_data
 
 import nnfs
+
 nnfs.init()
+
 
 class Activation_Softmax:
     def forward(self, inputs):
-        #get unnormalized probabilities
+        # get un-normalized probabilities
         exp_values = np.exp(inputs - np.max(inputs, axis=1, keepdims=True))
 
-        #normalize them for each sample
-        probabilities = exp_values / np.sum(exp_values, axis=1,keepdims=True)
+        # normalize them for each sample
+        probabilities = exp_values / np.sum(exp_values, axis=1, keepdims=True)
 
         self.output = probabilities
 
 
+"""
 #create dataset
 
 X,y= spiral_data(samples=100,classes = 3)
@@ -79,3 +82,5 @@ print('normalized exponential values:')
 
 print(norm_values)
 print('sum of normalized values:', np.sum(norm_values))
+
+"""
